@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Admin, Resource } from "react-admin";
+import jsonServerProvider from "ra-data-json-server";
+import { PostList, PostCreate, PostEdit } from "./Resources/posts";
+import { UserEdit, UserList, UserCreate } from "./Resources/users";
+import "./App.css";
+
+import authProvider, { httpClient } from "./Auth/authProvider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Admin
+      dataProvider={jsonServerProvider(process.env.REACT_APP_API!, httpClient)}
+      authProvider={authProvider}
+      requireAuth
+    >
+      <Resource
+        name="posts"
+        list={PostList}
+        create={PostCreate}
+        edit={PostEdit}
+      />
+      <Resource
+        name="projects"
+        list={PostList}
+        create={PostCreate}
+        edit={PostEdit}
+      />
+      <Resource
+        name="users"
+        list={UserList}
+        create={UserCreate}
+        edit={UserEdit}
+      />
+    </Admin>
   );
 }
 
