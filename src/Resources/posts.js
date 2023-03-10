@@ -11,7 +11,7 @@ export const PostList = () => (
             <DateField source="date" />
             <NumberField source="isProject" />
             <TextField source="url" />
-            <TextField source="github" />
+            <TextField source="url_img" />
             <EditButton />
         </Datagrid>
     </List>
@@ -29,7 +29,7 @@ export const PostEdit = () => (
             <TextInput source="title" />
             <DateInput label="Publication date" source="date" />
             <TextInput source="url" />
-            <TextInput source="github" />
+            <TextInput source="url_img" />
         </SimpleForm>
     </Edit>
 );
@@ -40,7 +40,7 @@ export const PostCreate = () => (
              <TextInput source="title" />
             <DateInput label="Publication date" source="date" />
             <TextInput source="url" />
-            <TextInput source="github" />
+            <TextInput source="url_img" />
         </SimpleForm>
     </Create>
 );
